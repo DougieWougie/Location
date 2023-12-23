@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Platform, Text, View, StyleSheet } from "react-native";
 import * as Device from "expo-device";
 import * as Location from "expo-location";
+import Button from "./components/Button";
 
 export default function App() {
   const [location, setLocation] = useState(null);
@@ -36,6 +37,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{text}</Text>
+      <Button
+        theme={"primary"}
+        label={"Check in"}
+        onPress={() => alert("You pressed a button.")}
+      />
     </View>
   );
 }
