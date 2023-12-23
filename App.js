@@ -3,6 +3,7 @@ import { Platform, Text, View, StyleSheet } from "react-native";
 import * as Device from "expo-device";
 import * as Location from "expo-location";
 import Button from "./components/Button";
+import Logo from "./components/Logo";
 
 export default function App() {
   const [location, setLocation] = useState(null);
@@ -31,15 +32,23 @@ export default function App() {
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+    latitude = JSON.stringify(location["coords"]["latitude"]);
+    longitude = JSON.stringify(location["coords"]["longitude"]);
+    text = latitude.concat(", ", longitude);
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.paragraph}>{text}</Text>
+      <Logo />
       <Button
         theme={"primary"}
         label={"Check in"}
+        onPress={() => alert("You pressed a button.")}
+      />
+      <Button
+        theme={"secondary"}
+        label={"Cancel"}
         onPress={() => alert("You pressed a button.")}
       />
     </View>
@@ -56,5 +65,6 @@ const styles = StyleSheet.create({
   paragraph: {
     fontSize: 18,
     textAlign: "center",
+    width: 300,
   },
 });

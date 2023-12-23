@@ -7,15 +7,41 @@ export default function Button({ label, theme, onPress }) {
       <View
         style={[
           styles.buttonContainer,
-          { borderWidth: 4, borderColor: "#ffd33d", borderRadius: 18 },
+          { borderWidth: 2, borderColor: "#000000", borderRadius: 18 },
         ]}
       >
         <Pressable
-          style={[styles.button, { backgroundColor: "#fff" }]}
+          style={[styles.button, { backgroundColor: "#0ffc03" }]}
           onPress={onPress}
         >
           <FontAwesome
             name="map-pin"
+            size={18}
+            color="#25292e"
+            style={styles.buttonIcon}
+          />
+          <Text style={[styles.buttonLabel, { color: "#25292e" }]}>
+            {label}
+          </Text>
+        </Pressable>
+      </View>
+    );
+  }
+
+  if (theme === "secondary") {
+    return (
+      <View
+        style={[
+          styles.buttonContainer,
+          { borderWidth: 2, borderColor: "#000000", borderRadius: 18 },
+        ]}
+      >
+        <Pressable
+          style={[styles.button, { backgroundColor: "#d34" }]}
+          onPress={onPress}
+        >
+          <FontAwesome
+            name="ban"
             size={18}
             color="#25292e"
             style={styles.buttonIcon}
@@ -45,6 +71,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 3,
+    margin: 5,
   },
   button: {
     borderRadius: 10,
@@ -59,6 +86,6 @@ const styles = StyleSheet.create({
   },
   buttonLabel: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 20,
   },
 });
